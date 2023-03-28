@@ -399,7 +399,7 @@ Shader "koturn/KGPUParticle/StarStorm"
                 lmap,
                 ambient);
 
-            UNITY_APPLY_FOG(i.fogCoord, color);
+            UNITY_APPLY_FOG(fi.fogCoord, color);
             return color;
         }
 
