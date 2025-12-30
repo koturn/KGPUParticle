@@ -224,25 +224,32 @@ Shader "koturn/KGPUParticle/StarStorm"
             //! Clip space position of the vertex/fragment.
             float4 pos : SV_POSITION;
             //! World space position of the vertex/fragment.
-            float3 worldPos: TEXCOORD1;
+            float3 worldPos: TEXCOORD0;
+        #if FACE_SEMANTICS == VFACE
             //! World space normal of the vertex/fragment.
-            nointerpolation float3 normal : TEXCOORD2;
+            float3 normal : TEXCOORD1;
             //! Color of the vertex/fragment.
-            nointerpolation float3 color : TEXCOORD3;
+            float3 color : TEXCOORD2;
+        #else
+            //! World space normal of the vertex/fragment.
+            nointerpolation float3 normal : TEXCOORD1;
+            //! Color of the vertex/fragment.
+            nointerpolation float3 color : TEXCOORD2;
+        #endif  // FACE_SEMANTICS == VFACE
         #if defined(LIGHTMAP_ON)
         #    ifdef DYNAMICLIGHTMAP_ON
             //! Lightmap and dynamic lightmap coordinate.
-            float4 lmap: TEXCOORD4;
+            float4 lmap: TEXCOORD3;
         #    else
             //! Lightmap coordinate.
-            float2 lmap: TEXCOORD4;
+            float2 lmap: TEXCOORD3;
         #    endif
         #elif defined(UNITY_SHOULD_SAMPLE_SH)
             //! Ambient light color.
-            half3 ambient: TEXCOORD4;
+            half3 ambient: TEXCOORD3;
         #endif  // UNITY_SHOULD_SAMPLE_SH
-            UNITY_LIGHTING_COORDS(5, 6)
-            UNITY_FOG_COORDS(7)
+            UNITY_LIGHTING_COORDS(4, 5)
+            UNITY_FOG_COORDS(6)
         };
 
 

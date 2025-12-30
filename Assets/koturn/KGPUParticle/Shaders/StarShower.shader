@@ -210,10 +210,17 @@ Shader "koturn/KGPUParticle/StarShower"
             float4 pos : SV_POSITION;
             //! World space position of the vertex/fragment.
             float3 worldPos: TEXCOORD0;
+        #if FACE_SEMANTICS == VFACE
+            //! World space normal of the vertex/fragment.
+            float3 normal : TEXCOORD1;
+            //! Color of the vertex/fragment.
+            float3 color : TEXCOORD2;
+        #else
             //! World space normal of the vertex/fragment.
             nointerpolation float3 normal : TEXCOORD1;
             //! Color of the vertex/fragment.
             nointerpolation float3 color : TEXCOORD2;
+        #endif  // FACE_SEMANTICS == VFACE
         #if defined(LIGHTMAP_ON)
         #    ifdef DYNAMICLIGHTMAP_ON
             //! Lightmap and dynamic lightmap coordinate.
