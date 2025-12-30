@@ -66,10 +66,9 @@ Shader "koturn/KGPUParticle/StarShower"
         [Enum(Off, 0, On, 1)]
         _ZClip ("ZClip", Int) = 1  // Default: On
 
-        [Enum(2D, 0, 3D, 1)]
-        _OffsetFactor ("Offset Factor", Int) = 0
+        _OffsetFactor ("Offset Factor", Range(-1.0, 1.0)) = 0
 
-        _OffsetUnits ("Offset Units", Range(-100, 100)) = 0
+        _OffsetUnits ("Offset Units", Range(-1.0, 1.0)) = 0
 
         [ColorMask]
         _ColorMask ("Color Mask", Int) = 15  // Default: RGBA

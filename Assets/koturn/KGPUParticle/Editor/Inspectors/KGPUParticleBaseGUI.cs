@@ -127,13 +127,13 @@ namespace Koturn.KGPUParticle.Inspectors
         /// </summary>
         private const string PropNameZClip = "_ZClip";
         /// <summary>
-        /// Property name of "_OffsetFact".
+        /// Property name of "_OffsetFactor".
         /// </summary>
-        private const string PropNameOffsetFact = "_OffsetFact";
+        private const string PropNameOffsetFactor = "_OffsetFactor";
         /// <summary>
-        /// Property name of "_OffsetUnit".
+        /// Property name of "_OffsetUnits".
         /// </summary>
-        private const string PropNameOffsetUnit = "_OffsetUnit";
+        private const string PropNameOffsetUnits = "_OffsetUnits";
         /// <summary>
         /// Property name of "_ColorMask".
         /// </summary>
@@ -318,7 +318,7 @@ namespace Koturn.KGPUParticle.Inspectors
                 DrawRenderingMode(me, mps);
                 ShaderProperty(me, mps, PropNameZTest, false);
                 ShaderProperty(me, mps, PropNameZClip, false);
-                DrawOffsetProperties(me, mps, PropNameOffsetFact, PropNameOffsetUnit);
+                DrawOffsetProperties(me, mps, PropNameOffsetFactor, PropNameOffsetUnits);
                 ShaderProperty(me, mps, PropNameColorMask, false);
                 ShaderProperty(me, mps, PropNameAlphaToMask, false);
 
@@ -638,21 +638,21 @@ namespace Koturn.KGPUParticle.Inspectors
         /// </summary>
         /// <param name="me">A <see cref="MaterialEditor"/>.</param>
         /// <param name="mps"><see cref="MaterialProperty"/> array.</param>
-        /// <param name="propNameFactor">Property name for the first argument of "Offset".</param>
-        /// <param name="propNameUnit">Property name for the second argument of "Offset".</param>
-        private static void DrawOffsetProperties(MaterialEditor me, MaterialProperty[] mps, string propNameFactor, string propNameUnit)
+        /// <param name="propNameOffsetFactor">Property name for the first argument of "Offset".</param>
+        /// <param name="propNameOffsetUnits">Property name for the second argument of "Offset".</param>
+        private static void DrawOffsetProperties(MaterialEditor me, MaterialProperty[] mps, string propNameOffsetFactor, string propNameOffsetUnits)
         {
-            var propFactor = FindProperty(propNameFactor, mps, false);
-            var propUnit = FindProperty(propNameUnit, mps, false);
-            if (propFactor == null || propUnit == null)
+            var propOffsetFactor = FindProperty(propNameOffsetFactor, mps, false);
+            var propOffsetUnits = FindProperty(propNameOffsetUnits, mps, false);
+            if (propOffsetFactor == null || propOffsetUnits == null)
             {
                 return;
             }
             EditorGUILayout.LabelField("Offset");
             using (new EditorGUI.IndentLevelScope())
             {
-                ShaderProperty(me, propFactor);
-                ShaderProperty(me, propUnit);
+                ShaderProperty(me, propOffsetFactor);
+                ShaderProperty(me, propOffsetUnits);
             }
         }
 
